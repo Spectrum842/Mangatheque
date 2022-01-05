@@ -1,12 +1,11 @@
 <?php
 
-require 'app/models/config/config.php';
-require 'app/models/database/Database.php';
-require 'app/models/Authentification.php';
+require 'C://Dev/Mangatheque/app/models/config/config.php';
+require 'C://Dev/Mangatheque/app/models/database/Database.php';
+require 'C://Dev/Mangatheque/app/models/Authentification.php';
 session_start();
 session_destroy();
-require 'pages/header.php';
-
+require 'C://Dev/Mangatheque//pages/header.php';
 if($_POST['action'] === 'connexion'){
     $errors = [];
     $authentification = new Authentification();
@@ -19,7 +18,7 @@ if($_POST['action'] === 'connexion'){
             session_start();
             setcookie('session', 'ok');
             $_SESSION['id_user'] = $id_user;
-            header('Location: http://localhost:3000/app/controllers/Dashboard.php');
+            header('Location: /app/controllers/Dashboard.php');
             exit();
         }else{
             $errors['password'] = 'Le mot de passe est erroné.';
@@ -30,6 +29,6 @@ if($_POST['action'] === 'connexion'){
 
 }
 
-include 'pages/authentification/connexion.php';
+include 'C://Dev/Mangatheque/pages/authentification/connexion.php';
 
-require 'pages/footer.php';
+ require 'C://Dev/Mangatheque/pages/footer.php';

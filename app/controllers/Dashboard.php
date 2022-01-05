@@ -1,10 +1,10 @@
 <?php
 
-require 'app/models/config/config.php';
-require 'app/models/database/Database.php';
-require 'app/models/User.php';
-require 'app/models/Manga.php';
-require 'app/models/Collection.php';
+require 'C://Dev/Mangatheque/app/models/config/config.php';
+require 'C://Dev/Mangatheque/app/models/database/Database.php';
+require 'C://Dev/Mangatheque/app/models/User.php';
+require 'C://Dev/Mangatheque/app/models/Manga.php';
+require 'C://Dev/Mangatheque/app/models/Collection.php';
 session_start();
 
 
@@ -14,7 +14,7 @@ if($_SESSION['id_user']){
     $name = $user->getName();
     $role = $user->isAdmin();
     $role = $role[0]['role'];
-    include 'pages/header.php';
+    include 'C://Dev/Mangatheque/pages/header.php';
     $instanceManga = new Manga();
     $allManga = $instanceManga->getMangas();
     
@@ -40,7 +40,7 @@ if($_SESSION['id_user']){
     if($_POST['action'] === 'addCollection'){
         try{
             $addCollection = $instanceCollection->addCollection($_POST['id_user'], $_POST['id_manga'], $_POST['name'], trim($_POST['image']), $_POST['description']);
-            header('Location: http://localhost:3000/app/controllers/Dashboard.php');
+            header('Location: C://Dev/Mangatheque/app/controllers/Dashboard.php');
             exit;
         }catch(PDOException $e){
             if($e->getMessage() == "SQLSTATE[22001]: String data, right truncated: 1406 Data too long for column 'image' at row 1"){
@@ -60,7 +60,7 @@ if($_SESSION['id_user']){
         
         try{
             $updateManga = $instanceCollection->updateCollection($_POST['idCollection'], $_POST['updateName'], trim($_POST['updateImage']), $_POST['updateDescription'] );
-            header('Location: http://localhost:3000/app/controllers/Dashboard.php');
+            header('Location: C://Dev/Mangatheque/app/controllers/Dashboard.php');
             exit;
         }catch(PDOException $e){
             if($e->getMessage() == "SQLSTATE[22001]: String data, right truncated: 1406 Data too long for column 'image' at row 1"){
@@ -73,19 +73,19 @@ if($_SESSION['id_user']){
         if($_POST['confirmation'] == 'yes'){
             try{
                 $deleteCollection = $instanceCollection->deleteCollection($_POST['idCollection']);
-                header('Location: http://localhost:3000/app/controllers/Dashboard.php');
+                header('Location: C://Dev/Mangatheque/app/controllers/Dashboard.php');
                 exit;
             }catch(PDOException $e){
                 $errors['delete'] = 'Une Erreur durant la suppression est survenue.';
             }
         }
     }
-    include 'pages/dashboard.php';
+    include 'C://Dev/Mangatheque/pages/dashboard.php';
     
     
 }else{
-    header('Location: http://localhost:3000/app/controllers/Connexion.php');
+    header('Location: /app/controllers/Connexion.php');
     exit;
 }
 
-include 'pages/footer.php';
+include 'C://Dev/Mangatheque/pages/footer.php';

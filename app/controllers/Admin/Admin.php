@@ -1,9 +1,9 @@
 <?php
 
-    require 'app/models/config/config.php';
-    require 'app/models/database/Database.php';
-    require 'app/models/User.php';
-    require 'app/models/Manga.php';
+    require 'C://Dev/Mangatheque/app/models/config/config.php';
+    require 'C://Dev/Mangatheque/app/models/database/Database.php';
+    require 'C://Dev/Mangatheque/app/models/User.php';
+    require 'C://Dev/Mangatheque/app/models/Manga.php';
     session_start();
 
     if($_SESSION['id_user']){
@@ -14,11 +14,11 @@
             $role = $isAdmin[0]['role'];
             $name = $user->getName();
             if($role === 'admin'){
-                include 'pages/header.php';
+                include 'C://Dev/Mangatheque/pages/header.php';
                 $users = $user->getUsers();
                 $manga = new Manga();
                 $mangas = $manga->getMangas();
-                include 'pages/admin/admin.php';
+                include 'C://Dev/Mangatheque/pages/admin/admin.php';
     
                 if( $_POST['action'] === 'addManga'){
                    
@@ -27,7 +27,7 @@
                     }
                     try{
                         $addManga = $manga->addManga($_POST['name'],$_POST['author'],$_POST['image'],$_POST['date_start'],$date_end,$_POST['type'],$_POST['category']);
-                        header('Location: http://localhost:3000/app/controllers/admin/Admin.php?listUnknowManga.php');
+                        header('Location: /app/controllers/admin/Admin.php?listUnknowManga.php');
                         exit;
                     }catch(PDOexception $e){
                         echo ' ERREUR'.$e->getMessage();
@@ -37,7 +37,7 @@
                 if( $_POST['action'] === 'deleteManga' && $_POST['confirmation'] === 'yes'){
                     try{
                         $deleteManga = $manga->deleteManga($_POST['idManga']);
-                        header('Location: http://localhost:3000/app/controllers/admin/Admin.php?view=listManga');
+                        header('Location: /app/controllers/admin/Admin.php?view=listManga');
                         exit;
                     }catch(PDOexception $e){
                         echo ' ERREUR'.$e->getMessage();
@@ -45,17 +45,17 @@
                 }
     
                 if($_GET['view']){
-                    include 'pages/admin/'.$_GET['view'].'.php';
+                    include 'C://Dev/Mangatheque/pages/admin/'.$_GET['view'].'.php';
                     if($_GET['view'] === 'addManga'){
                         $unknowManga = $manga->getUnknowManga();
-                        include 'pages/admin/listUnknowManga.php';
+                        include 'C://Dev/Mangatheque/pages/admin/listUnknowManga.php';
                         
                     }
                 }
-                include 'pages/footer.php';
+                include 'C://Dev/Mangatheque/pages/footer.php';
                
             }else{
-                header('Location: http://localhost:3000/app/controllers/Dashboard.php');
+                header('Location: /app/controllers/Dashboard.php');
                 exit;
             }
         }catch(PDOexception $e){
@@ -63,7 +63,7 @@
         }
         
     }else{
-        header('Location: http://localhost:3000/app/controllers/Connexion.php');
+        header('Location: /app/controllers/Connexion.php');
         exit;
     }
     
