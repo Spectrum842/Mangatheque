@@ -1,4 +1,5 @@
 
+// Fonction pour afficher/Masque une section
 function afficherMasquer($id){
     if(document.getElementById($id).classList.contains('hide')){
         document.getElementById($id).classList.remove('hide');
@@ -7,9 +8,10 @@ function afficherMasquer($id){
     }
 }
 
-
+/* Script DOM APP*/
 window.addEventListener('DOMContentLoaded', function(){
 
+    // Code pour mode nuit
     let nightMode = document.getElementById('nightMode');
     if(nightMode){
         nightMode.addEventListener('click', ()=>{
@@ -23,23 +25,35 @@ window.addEventListener('DOMContentLoaded', function(){
     
     // Conditions pour savoir si on est dans la page Dashboard.
     if (document.getElementById('addColletionButton') ){
+
+        // Déclarations des variables de la page Dashboard
         let addColletionButton = document.getElementById('addColletionButton');
-        
+        let tabCollection = document.querySelectorAll('.updateCollection');
+        let tabDeleteCollection = document.querySelectorAll('.deleteCollection');
+        let buttonMangaDetails = document.querySelectorAll('.moreInfoManga');
         addColletionButton.addEventListener('click', () => {
             afficherMasquer('divFormCollection');
         });
-        
 
+        // Code pour détecter le changement du selecteur de manga
         document.getElementById('id_manga').addEventListener('change', ()=>{
-            let select = document.getElementById('id_manga');
-            let optionName = select.options[select.selectedIndex].text;
-            let optionImage = select.options[select.selectedIndex].getAttribute('date-post-image');
-
-            document.querySelector('[name=name]').value = optionName;
-            document.querySelector('[name=image]').value = optionImage;
+            // Si un manga est sélectionné on remplit les champs, sinon les vide
+            if(document.getElementById('id_manga').value != 0){
+                let select = document.getElementById('id_manga');
+                let optionName = select.options[select.selectedIndex].text;
+                let optionImage = select.options[select.selectedIndex].getAttribute('date-post-image');
+    
+                document.querySelector('[name=name]').value = optionName;
+                document.querySelector('[name=image]').value = optionImage;
+            }else{
+                document.querySelector('[name=name]').value = '';
+                document.querySelector('[name=image]').value = '';
+            }
+            
         });
 
-        let tabCollection = document.querySelectorAll('.updateCollection');
+        // Code pour remplir les champs de la modal de modification de la Collection de manga
+       
         tabCollection.forEach(element => {
             element.addEventListener('click', () => {
 
@@ -58,11 +72,11 @@ window.addEventListener('DOMContentLoaded', function(){
             });
         });
 
-        let tabDeleteCollection = document.querySelectorAll('.deleteCollection');
+        // Code pour supprimer une collection
         tabDeleteCollection.forEach(element => {
             element.addEventListener('click', () => {
                 let idCollection = element.getAttribute('data-post-id');
-
+                console.log(idCollection);
                 let nameCollection = element.getAttribute('data-post-name');
                 document.getElementById('titleModalDelete').innerHTML = "Supprimer collection : "+nameCollection;
                 document.getElementById('idCollectionDelete').value = idCollection;
@@ -70,6 +84,8 @@ window.addEventListener('DOMContentLoaded', function(){
                 
             });
         });
+
+        // Code pour afficher/masquer divers div
         document.querySelector('.closeFormUpdate').addEventListener('click', ()=>{
             afficherMasquer('divFormUpdate');
         });
@@ -81,8 +97,20 @@ window.addEventListener('DOMContentLoaded', function(){
         document.querySelector('.closeFormDelete').addEventListener('click', ()=>{
             afficherMasquer('divFormDelete');
         });
+
+        // Code pour afficher les informations supplémentaires
+        buttonMangaDetails.forEach(element =>{
+            element.addEventListener('click', ()=>{
+                console.log(element.getAttribute('data-post-id'));
+                afficherMasquer('divMangaDetails'+element.getAttribute('data-post-id'));
+            });
+        })
+        
     }
 
+
+/* SCRIPT ADMIN ( Non terminé ) */
+    // Code pour rajouter un manga
     let buttonAddManga = document.querySelectorAll('.buttonAddManga');
     buttonAddManga.forEach(element => {
         element.addEventListener('click', () => {
@@ -122,33 +150,4 @@ window.addEventListener('DOMContentLoaded', function(){
         });
     }
 
-    // async function displayCollectionData(id){
-    //     const url = "/public/json/json.php?id_manga="+id;
-    //     await fetch(url)
-    //     .then(response => response.json())
-    //         .then(response =>{
-    //             console.log(response);
-    //             const json = JSON.stringify(response);
-    //             console.log(json);
-    //             const obj = JSON.parse(json);
-    //             console.log(obj);
-    //         })
-    //         .catch(error => {
-    //             console.log(error);            
-    //         });
-    // }
-
-    let buttonMangaDetails = document.querySelectorAll('.moreInfoManga');
-    if(buttonMangaDetails.length > 0 ){
-        buttonMangaDetails.forEach(element =>{
-            element.addEventListener('click', ()=>{
-                console.log(element.getAttribute('data-post-id'));
-                afficherMasquer('divMangaDetails'+element.getAttribute('data-post-id'));
-            });
-        })
-    }
-   
-    
-    
-    
 });

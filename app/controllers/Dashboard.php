@@ -6,7 +6,6 @@ require 'C://Dev/Mangatheque/app/models/User.php';
 require 'C://Dev/Mangatheque/app/models/Manga.php';
 require 'C://Dev/Mangatheque/app/models/Collection.php';
 session_start();
-
 if(isset($_SESSION['id_user'])){
     $id_user = $_SESSION['id_user'];
     $user = new User($id_user);
@@ -76,6 +75,7 @@ if(isset($_SESSION['id_user'])){
                 exit;
             }catch(PDOException $e){
                 $errors['delete'] = 'Une Erreur durant la suppression est survenue.';
+                echo $e->getMessage();
             }
         }
     }
