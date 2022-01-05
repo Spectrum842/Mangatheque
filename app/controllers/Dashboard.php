@@ -7,7 +7,6 @@ require 'C://Dev/Mangatheque/app/models/Manga.php';
 require 'C://Dev/Mangatheque/app/models/Collection.php';
 session_start();
 
-
 if($_SESSION['id_user']){
     $id_user = $_SESSION['id_user'];
     $user = new User($id_user);

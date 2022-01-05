@@ -2,8 +2,8 @@
     <html>
 
         <head>
-            <meta charset="utf-8">
-            <meta name="viewport" content="width=device-width, initial-scale=1.0">
+            <meta charset="utf-8" />
+            <meta name="viewport" content="width=device-width, initial-scale=1.0" />
             <link rel="stylesheet" href="/public/css/style.css"></link> 
             <script type="module" src="/public/js/main.js"></script>
             <script src="https://kit.fontawesome.com/1608cf58a8.js" crossorigin="anonymous"></script>
@@ -20,24 +20,24 @@
                         <?php 
                         if($_SESSION['id_user']){
                             ?>
-                            <li><a href="/app/controllers/Deconnexion.php">Deconnexion</a></li>
+                            <li><a href="/app/controllers/Deconnexion.php" title="lien déconnexion">Deconnexion</a></li>
                             <?php
                         }else{
                             ?>
-                            <li><a href="/app/controllers/Inscription.php">Inscrivez-vous</a></li>
-                            <li><a href="/app/controllers/Connexion.php">Connectez-vous</a></li>
+                            <li><a href="/app/controllers/Inscription.php" title="lien inscription">Inscrivez-vous</a></li>
+                            <li><a href="/app/controllers/Connexion.php" title="lien connexion">Connectez-vous</a></li>
                             <?php
                         }
     
                         if($role === 'admin'){
                             if($_SERVER['PHP_SELF'] === '/app/controllers/admin/Admin.php'){
                                 ?>
-                                <li><a href="/app/controllers/Dashboard.php">Dashboard</a></li>
+                                <li><a href="/app/controllers/Dashboard.php" title="lien dashboard">Dashboard</a></li>
                                 <?php
                                 
                             }else{
                                 ?>
-                                <li><a href="/app/controllers/admin/Admin.php">Admin</a></li>
+                                <li><a href="/app/controllers/admin/Admin.php" title="lien admin">Admin</a></li>
                                 <?php
                             }
                         }
