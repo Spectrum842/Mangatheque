@@ -52,16 +52,16 @@
                         <?php }  ?>
                 
                 <div class="divCenter">
-                <p>
-                    <label class="label" for="datebirth">Date de naissance</label>
-                </p>
-                <p>
-                    <input type="date" name="dateBirth" value="<?= $_POST['dateBirth'] ?>" REQUIRED/>
-                </p>
-                    <?php  if( isset( $errors['dateBirth'] ) ){  ?>
-                <p><span class="spanError"><?= $errors['dateBirth'] ?></span></p>
-                    <?php } ?>
-                
+                    <p>
+                        <label class="label" for="datebirth">Date de naissance</label>
+                    </p>
+                    <p>
+                        <input type="date" name="dateBirth" value="<?= $_POST['dateBirth'] ?>" REQUIRED/>
+                    </p>
+                        <?php  if( isset( $errors['dateBirth'] ) ){  ?>
+                    <p><span class="spanError"><?= $errors['dateBirth'] ?></span></p>
+                        <?php } ?>
+                </div>
                 <p id="submitAuthenticate">
                     <input type="submit" class="submitAuthenticate button otherButton" value="Inscription"></input>
                 </p>

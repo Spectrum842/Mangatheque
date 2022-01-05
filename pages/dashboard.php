@@ -32,6 +32,7 @@
                 
                 <?php if($collection['id_manga'] != 0 ) { ?>
                 <p class="moreInfoManga" data-post-id="<?= $collection['id_manga'] ?>">Plus d'infos<i class="fas fa-angle-double-down icone"></i></p>
+                
                 <div id="divMangaDetails<?= $collection['id_manga']?>" class="hide">
                     
                     <p> Auteur : <?= $tabMangaDetails[$collection['id_manga']]['author'] ?></p>

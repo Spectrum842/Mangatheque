@@ -242,7 +242,7 @@ input, select, textarea{
     padding:0.5rem;
     border-radius: 1rem;
     margin: 0.5rem 0;
-    min-width:50%;
+    min-width:auto;
     max-width:90%;
 }
 
