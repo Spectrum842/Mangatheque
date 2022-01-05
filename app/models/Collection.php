@@ -7,7 +7,14 @@ class Collection
         $this->id_manga = $id_manga;
     }
 
-    public function getCollection(){
+    public function getCollection($id){
+        $db = new Database();
+        $sql = "SELECT * FROM collection WHERE  ID = :ID";
+        $det = $db->select($sql, ['ID'=> $id]);
+        
+        return $det;
+    }
+    public function getAllCollection(){
         $db = new Database();
         if($this->id_manga != ''){
             $sql = "SELECT * FROM collection WHERE id_user = :id_user AND id_manga = :id_manga";

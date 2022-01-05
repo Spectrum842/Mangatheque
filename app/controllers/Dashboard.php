@@ -7,7 +7,7 @@ require 'C://Dev/Mangatheque/app/models/Manga.php';
 require 'C://Dev/Mangatheque/app/models/Collection.php';
 session_start();
 
-if($_SESSION['id_user']){
+if(isset($_SESSION['id_user'])){
     $id_user = $_SESSION['id_user'];
     $user = new User($id_user);
     $name = $user->getName();
@@ -16,13 +16,13 @@ if($_SESSION['id_user']){
     include 'C://Dev/Mangatheque/pages/header.php';
     $instanceManga = new Manga();
     $allManga = $instanceManga->getMangas();
-    
 
     $instanceCollection = new Collection($id_user);
-    $allCollection = $instanceCollection->getCollection();
+    $allCollection = $instanceCollection->getAllCollection();
     $countCollection = count($allCollection);
     $errors = array();
 
+    $collection = $instanceCollection->getCollection(2);
     foreach($allCollection as $collection){
         if($collection['id_manga'] != 0){
             $mangaDetails = $instanceManga->getManga($collection['id_manga']);

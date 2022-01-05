@@ -122,9 +122,23 @@ window.addEventListener('DOMContentLoaded', function(){
         });
     }
 
+    // async function displayCollectionData(id){
+    //     const url = "/public/json/json.php?id_manga="+id;
+    //     await fetch(url)
+    //     .then(response => response.json())
+    //         .then(response =>{
+    //             console.log(response);
+    //             const json = JSON.stringify(response);
+    //             console.log(json);
+    //             const obj = JSON.parse(json);
+    //             console.log(obj);
+    //         })
+    //         .catch(error => {
+    //             console.log(error);            
+    //         });
+    // }
+
     let buttonMangaDetails = document.querySelectorAll('.moreInfoManga');
-    console.log(buttonMangaDetails);
-    console.log(buttonMangaDetails.length);
     if(buttonMangaDetails.length > 0 ){
         buttonMangaDetails.forEach(element =>{
             element.addEventListener('click', ()=>{
@@ -133,5 +147,8 @@ window.addEventListener('DOMContentLoaded', function(){
             });
         })
     }
+   
+    
+    
     
 });
