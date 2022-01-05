@@ -2,14 +2,14 @@
 
 class Collection
 {
-    public function __construct($id_user, $id_manga = ''){
+    public function __construct($id_user = '', $id_manga = ''){
         $this->id_user = $id_user;
         $this->id_manga = $id_manga;
     }
 
     public function getCollection($id){
         $db = new Database();
-        $sql = "SELECT * FROM collection WHERE  ID = :ID";
+        $sql = "SELECT * FROM collection WHERE ID = :ID";
         $det = $db->select($sql, ['ID'=> $id]);
         
         return $det;

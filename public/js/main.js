@@ -8,6 +8,25 @@ function afficherMasquer($id){
     }
 }
 
+// Fonction pour récupérer les informations de chaque collection en JSON
+async function display_data(id_collection){
+    const url = "/public/json/json.php?ID="+id_collection;
+    await fetch(url)
+    .then(response => response.json())
+        .then(response =>{
+            const json = JSON.stringify(response);
+            const obj = JSON.parse(json);
+            document.getElementById('titleModalUpdate').innerHTML = "Modifier collection : "+obj.name;
+            document.getElementById('updateName').value = obj.name;
+           
+            document.getElementById('updateImage').value = obj.image;
+            document.getElementById('updateDescription').value =obj.description;
+        })
+        .catch(error => {
+            console.log(error);            
+        });
+}
+
 /* Script DOM APP*/
 window.addEventListener('DOMContentLoaded', function(){
 
@@ -60,12 +79,14 @@ window.addEventListener('DOMContentLoaded', function(){
                 let idCollection = element.getAttribute('data-post-id');
                 document.getElementById('idCollection').value = idCollection;
                 
-                let nameCollection = element.getAttribute('data-post-name');
-                document.getElementById('titleModalUpdate').innerHTML = "Modifier collection : "+nameCollection;
-                document.getElementById('updateName').value = element.getAttribute('data-post-name');
+                display_data(idCollection);
+
+                // Ancienne méthode pour remplir les champs 
+                // document.getElementById('titleModalUpdate').innerHTML = "Modifier collection : "+nameCollection;
+                // document.getElementById('updateName').value = element.getAttribute('data-post-name');
                
-                document.getElementById('updateImage').value = element.getAttribute('data-post-image');
-                document.getElementById('updateDescription').value = element.getAttribute('data-post-description');
+                // document.getElementById('updateImage').value = element.getAttribute('data-post-image');
+                // document.getElementById('updateDescription').value = element.getAttribute('data-post-description');
                 afficherMasquer('divFormUpdate');
                 
                 
@@ -109,7 +130,7 @@ window.addEventListener('DOMContentLoaded', function(){
     }
 
 
-/* SCRIPT ADMIN ( Non terminé ) */
+/* SCRIPT ADMIN (En développement)*/
     // Code pour rajouter un manga
     let buttonAddManga = document.querySelectorAll('.buttonAddManga');
     buttonAddManga.forEach(element => {
@@ -149,5 +170,5 @@ window.addEventListener('DOMContentLoaded', function(){
             afficherMasquer('divDeleteManga');
         });
     }
-
+    
 });

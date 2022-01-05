@@ -4,7 +4,7 @@
         <head>
             <meta charset="utf-8" />
             <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-            <link rel="stylesheet" href="/public/css/style.css"></link> 
+            <link rel="stylesheet" href="/public/css/style.css"></link>
             <script type="module" src="/public/js/main.js"></script>
             <script src="https://kit.fontawesome.com/1608cf58a8.js" crossorigin="anonymous"></script>
             
