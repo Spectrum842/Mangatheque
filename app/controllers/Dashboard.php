@@ -2,26 +2,36 @@
 
 require 'C://Dev/Mangatheque/app/models/config/config.php';
 require 'C://Dev/Mangatheque/app/models/database/Database.php';
+
 require 'C://Dev/Mangatheque/app/models/User.php';
 require 'C://Dev/Mangatheque/app/models/Manga.php';
 require 'C://Dev/Mangatheque/app/models/Collection.php';
+
 session_start();
+// On vérifie que la session est bien initialisé sinon on redirige sur la connexion
 if(isset($_SESSION['id_user'])){
+    // On stocke l'id_user
     $id_user = $_SESSION['id_user'];
+
+    // Instanciation de la classe user pour vérifier si user est admin
     $user = new User($id_user);
     $name = $user->getName();
     $role = $user->isAdmin();
     $role = $role[0]['role'];
     include 'C://Dev/Mangatheque/pages/header.php';
+
+    // Instanciation classe Manga
     $instanceManga = new Manga();
     $allManga = $instanceManga->getMangas();
 
+    // Instanciation classe Collection
     $instanceCollection = new Collection($id_user);
     $allCollection = $instanceCollection->getAllCollection();
     $countCollection = count($allCollection);
+
+    //Création du tableau d'erreurs
     $errors = array();
 
-    $collection = $instanceCollection->getCollection(2);
     foreach($allCollection as $collection){
         if($collection['id_manga'] != 0){
             $mangaDetails = $instanceManga->getManga($collection['id_manga']);
@@ -35,6 +45,7 @@ if(isset($_SESSION['id_user'])){
         
     }
 
+    // Conditions pour ajouter une collection
     if($_POST['action'] === 'addCollection'){
         try{
             $addCollection = $instanceCollection->addCollection($_POST['id_user'], $_POST['id_manga'], $_POST['name'], trim($_POST['image']), $_POST['description']);
@@ -54,6 +65,7 @@ if(isset($_SESSION['id_user'])){
         
     }
 
+    // Conditions pour update une collection
     if($_POST['action'] === 'updateCollection'){
         
         try{
@@ -67,6 +79,7 @@ if(isset($_SESSION['id_user'])){
         }
     }
 
+    // Conditions pour delete une collection
     if($_POST['action'] === 'deleteCollection'){
         if($_POST['confirmation'] == 'yes'){
             try{

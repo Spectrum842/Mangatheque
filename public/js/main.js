@@ -30,16 +30,23 @@ async function display_data(id_collection){
 /* Script DOM APP*/
 window.addEventListener('DOMContentLoaded', function(){
 
-    // Code pour mode nuit
+    //Local Storage for Nightmode + code
     let nightMode = document.getElementById('nightMode');
     if(nightMode){
         nightMode.addEventListener('click', ()=>{
             if(document.querySelector('body').classList.contains('dark')){
+                localStorage.setItem('nightMode', 'no');
                 document.querySelector('body').classList.remove('dark');
             }else{
+                localStorage.setItem('nightMode', 'yes');
                 document.querySelector('body').classList.add('dark');
             }
         })
+    }
+    if(localStorage.getItem('nightMode') === 'yes'){
+        document.querySelector('body').classList.add('dark');
+    }else{
+        document.querySelector('body').classList.remove('dark');
     }
     
     // Conditions pour savoir si on est dans la page Dashboard.

@@ -6,6 +6,7 @@
     require 'C://Dev/Mangatheque/app/models/Manga.php';
     session_start();
 
+    // On vérifie que l'utilisateur est connecté
     if($_SESSION['id_user']){
         try{
 
@@ -13,13 +14,15 @@
             $isAdmin = $user->isAdmin();
             $role = $isAdmin[0]['role'];
             $name = $user->getName();
+            // On vérifie que l'utilisateur est un admin sinon on redirige sur dashboard
             if($role === 'admin'){
                 include 'C://Dev/Mangatheque/pages/header.php';
                 $users = $user->getUsers();
                 $manga = new Manga();
                 $mangas = $manga->getMangas();
                 include 'C://Dev/Mangatheque/pages/admin/admin.php';
-    
+                
+                // Ajouter un manga
                 if( $_POST['action'] === 'addManga'){
                    
                     if($_POST['date_end'] === ''){
@@ -33,7 +36,8 @@
                         echo ' ERREUR'.$e->getMessage();
                     }
                 }
-    
+                
+                // Delete un manga
                 if( $_POST['action'] === 'deleteManga' && $_POST['confirmation'] === 'yes'){
                     try{
                         $deleteManga = $manga->deleteManga($_POST['idManga']);
@@ -43,7 +47,8 @@
                         echo ' ERREUR'.$e->getMessage();
                     }
                 }
-    
+                
+                // On check sur quel vue on se trouve pour l'ajouter
                 if($_GET['view']){
                     include 'C://Dev/Mangatheque/pages/admin/'.$_GET['view'].'.php';
                     if($_GET['view'] === 'addManga'){
