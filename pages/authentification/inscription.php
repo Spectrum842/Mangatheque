@@ -1,4 +1,4 @@
-
+<section>
     <div id="divInscription" class="divAuthenticate">
         <h2 class="titleAuthenticate">Inscription</h2>
         <form action="" id="formInscription" class="formAuthenticate" method="post">
@@ -67,3 +67,4 @@
                 </p>
         </form>
     </div>
+</section>

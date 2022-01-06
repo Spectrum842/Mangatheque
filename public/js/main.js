@@ -1,10 +1,10 @@
 
 // Fonction pour afficher/Masque une section
-function afficherMasquer($id){
-    if(document.getElementById($id).classList.contains('hide')){
-        document.getElementById($id).classList.remove('hide');
+function afficherMasquer(id){
+    if(document.getElementById(id).classList.contains('hide')){
+        document.getElementById(id).classList.remove('hide');
     }else{
-        document.getElementById($id).classList.add('hide');
+        document.getElementById(id).classList.add('hide');
     }
 }
 

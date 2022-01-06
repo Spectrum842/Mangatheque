@@ -1,8 +1,10 @@
         </main>
         <footer class="footer">
-            <div>
-                <p>Create with <i class="fab fa-gratipay"></i> by Lakshmy</p>
-            </div>  
+            <section>
+                <div>
+                    <p>Create with <i class="fab fa-gratipay"></i> by Lakshmy</p>
+                </div>  
+            </section>
         </footer>
     </body>
 </html>

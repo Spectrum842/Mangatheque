@@ -1,4 +1,4 @@
-
+<section>
     <div id="divConnexion" class="divAuthenticate">
         <h2 class="titleAuthenticate">Connexion</h2>
         <form action="" method="post" id="formConexxion" class="formAuthenticate">
@@ -37,3 +37,4 @@
             
         </form>
     </div>
+</section>

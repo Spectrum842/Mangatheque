@@ -11,7 +11,8 @@
             <title>Mangathèque</title>
         </head>
         <body class="light">
-                <header class="header">
+            <header class="header">
+                <section>
                     <div id="divTitleHeader">
                         <h1 id="mainTitle" onclick="location.href='/public/index.php'" class="title">La Mangathèque</h1>
                     </div>
@@ -45,6 +46,8 @@
                         
                         </ul>
                     </nav>
+                </section>
             </header>
+                    
             <main class="container">
                 <i class="fas fa-adjust" id="nightMode"></i>
