@@ -1,11 +1,11 @@
 <?php
 
-require 'C://Dev/Mangatheque/app/models/config/config.php';
+require '../../app/models/config/config.php';
 require 'C://Dev/Mangatheque/app/models/database/Database.php';
 
-require 'C://Dev/Mangatheque/app/models/User.php';
-require 'C://Dev/Mangatheque/app/models/Manga.php';
-require 'C://Dev/Mangatheque/app/models/Collection.php';
+require '../../app/models/User.php';
+require '../../app/models/Manga.php';
+require '../../app/models/Collection.php';
 
 session_start();
 // On vérifie que la session est bien initialisé sinon on redirige sur la connexion
@@ -18,7 +18,7 @@ if(isset($_SESSION['id_user'])){
     $name = $user->getName();
     $role = $user->isAdmin();
     $role = $role[0]['role'];
-    include 'C://Dev/Mangatheque/pages/header.php';
+    include '../../pages/header.php';
 
     // Instanciation classe Manga
     $instanceManga = new Manga();
@@ -92,7 +92,7 @@ if(isset($_SESSION['id_user'])){
             }
         }
     }
-    include 'C://Dev/Mangatheque/pages/dashboard.php';
+    include '../../../Mangatheque/pages/dashboard.php';
     
     
 }else{
@@ -100,4 +100,4 @@ if(isset($_SESSION['id_user'])){
     exit;
 }
 
-include 'C://Dev/Mangatheque/pages/footer.php';
+include '../../../Mangatheque/pages/footer.php';

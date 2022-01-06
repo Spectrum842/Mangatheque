@@ -18,7 +18,7 @@
                     <nav id="nav">
                         <ul>
                         <?php 
-                        if($_SESSION['id_user']){
+                        if(isset($_SESSION['id_user'])){
                             ?>
                             <li><a href="/app/controllers/Deconnexion.php" title="lien déconnexion">Deconnexion</a></li>
                             <?php
@@ -29,7 +29,7 @@
                             <?php
                         }
     
-                        if($role === 'admin'){
+                        if(isset($role) && $role === 'admin'){
                             if($_SERVER['PHP_SELF'] === '/app/controllers/admin/Admin.php'){
                                 ?>
                                 <li><a href="/app/controllers/Dashboard.php" title="lien dashboard">Dashboard</a></li>

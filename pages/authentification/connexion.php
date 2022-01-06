@@ -9,7 +9,7 @@
                     <label for="email" class="label">Email</label>
                 </p>
                 <p>
-                    <input type="text" name="email" value="<?= $_SESSION['email']?>" placeholder="example@email.com" />
+                    <input type="text" name="email" placeholder="example@email.com" />
                 </p>
                 
                 <?php if( isset( $errors['email'] ) ){ ?> 

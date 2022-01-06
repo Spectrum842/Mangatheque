@@ -9,7 +9,7 @@
                         <label class="label" for="email">Email</label>
                     </p>
                     <p>
-                        <input type="text" name="email" value="<?= $_POST['email'] ?>" placeholder="example@email.com"  REQUIRED/>
+                        <input type="text" name="email" value="<?php if(isset($_POST['email'])){echo($_POST['email']); }  ?>" placeholder="example@email.com"  REQUIRED/>
                     </p>
                     <?php if( isset( $errors['email'] ) ){ ?>
                         <p><span class="spanError"><?= $errors['email'] ?></span></p>
@@ -45,7 +45,7 @@
                         <label class="label" for="pseudo">Pseudonyme</label>
                     </p>
                     <p>
-                        <input type="text" name="pseudo" value="<?= $_POST['pseudo'] ?>" REQUIRED />
+                        <input type="text" name="pseudo" value="<?php if(isset($_POST['pseudo'])){ echo($_POST['pseudo']);}  ?>" REQUIRED />
                     </p>
                         <?php  if( isset( $errors['pseudo'] ) ){  ?>
                     <p><span class="spanError"><?= $errors['pseudo'] ?></span></p>
@@ -56,7 +56,7 @@
                         <label class="label" for="datebirth">Date de naissance</label>
                     </p>
                     <p>
-                        <input type="date" name="dateBirth" value="<?= $_POST['dateBirth'] ?>" REQUIRED/>
+                        <input type="date" name="dateBirth" value="<?php if(isset($_POST['dateBirth'])){ echo($_POST['dateBirth']);}  ?>" REQUIRED/>
                     </p>
                         <?php  if( isset( $errors['dateBirth'] ) ){  ?>
                     <p><span class="spanError"><?= $errors['dateBirth'] ?></span></p>

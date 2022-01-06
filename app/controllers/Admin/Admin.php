@@ -1,9 +1,9 @@
 <?php
 
-    require 'C://Dev/Mangatheque/app/models/config/config.php';
-    require 'C://Dev/Mangatheque/app/models/database/Database.php';
-    require 'C://Dev/Mangatheque/app/models/User.php';
-    require 'C://Dev/Mangatheque/app/models/Manga.php';
+    require '../../../app/models/config/config.php';
+    require '../../../app/models/database/Database.php';
+    require '../../../app/models/User.php';
+    require '../../../app/models/Manga.php';
     session_start();
 
     // On vérifie que l'utilisateur est connecté
@@ -16,11 +16,11 @@
             $name = $user->getName();
             // On vérifie que l'utilisateur est un admin sinon on redirige sur dashboard
             if($role === 'admin'){
-                include 'C://Dev/Mangatheque/pages/header.php';
+                include '../../../pages/header.php';
                 $users = $user->getUsers();
                 $manga = new Manga();
                 $mangas = $manga->getMangas();
-                include 'C://Dev/Mangatheque/pages/admin/admin.php';
+                include '../../../pages/admin/admin.php';
                 
                 // Ajouter un manga
                 if( $_POST['action'] === 'addManga'){
@@ -53,11 +53,11 @@
                     include 'C://Dev/Mangatheque/pages/admin/'.$_GET['view'].'.php';
                     if($_GET['view'] === 'addManga'){
                         $unknowManga = $manga->getUnknowManga();
-                        include 'C://Dev/Mangatheque/pages/admin/listUnknowManga.php';
+                        include '../../../pages/admin/listUnknowManga.php';
                         
                     }
                 }
-                include 'C://Dev/Mangatheque/pages/footer.php';
+                include '../../../pages/footer.php';
                
             }else{
                 header('Location: /app/controllers/Dashboard.php');

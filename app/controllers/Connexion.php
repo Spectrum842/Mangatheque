@@ -1,13 +1,13 @@
 <?php
 
-require 'C://Dev/Mangatheque/app/models/config/config.php';
-require 'C://Dev/Mangatheque/app/models/database/Database.php';
-require 'C://Dev/Mangatheque/app/models/Authentification.php';
+require '../../app/models/config/config.php';
+require '../../app/models/database/Database.php';
+require '../../app/models/Authentification.php';
 
 // On initialise et détruit la session a chaque passage sur la page connexion
 session_start();
 session_destroy();
-require 'C://Dev/Mangatheque//pages/header.php';
+require '../../pages/header.php';
 // On vérifie le post formulaire
 if($_POST['action'] === 'connexion'){
     // Création du tableau de gestion des erreurs
@@ -35,6 +35,6 @@ if($_POST['action'] === 'connexion'){
 
 }
 
-include 'C://Dev/Mangatheque/pages/authentification/connexion.php';
+include '../../pages/authentification/connexion.php';
 
- require 'C://Dev/Mangatheque/pages/footer.php';
+ require '../../Mangatheque/pages/footer.php';

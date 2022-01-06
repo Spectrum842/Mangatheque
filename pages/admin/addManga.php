@@ -41,7 +41,7 @@
                 <input name="category" id="category" name="category" id="category" value="<?= $_POST['category'] ?>"/>
             </p>
 
-            <input type="submit"></input>
+            <input type="submit" name="submit"/>
         </form>
     </div>
 

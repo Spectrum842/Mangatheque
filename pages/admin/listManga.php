@@ -3,7 +3,7 @@
         ?>
         <div id="divManga<?= $manga['ID'] ?>" class="divAdmin">
             <p>Nom : <?= $manga['name'] ?></p>
-            <img src ="<?= $manga['image'] ?>" alt="logo_<?= $manga['ID']?>" style="max-width:200px; max-height:150px">
+            <img src ="<?= $manga['image'] ?>" alt="logo_<?= $manga['ID']?>" class="imageAdminManga" >
             <p>Auteur : <?= $manga['author'] ?></p>
             
             <p>Date de parution : <?= $manga['date_start'] ?></p>
@@ -18,8 +18,8 @@
         <span class="closeDeleteManga">x</span>
         <h2>Supprimer le manga ? </h2>
         <form action="" method="post">
-            <input type="hidden" name="action" value="deleteManga">
-            <input type="hidden" id="idMangaDelete" name="idManga" value="">
+            <input type="hidden" name="action" value="deleteManga" />
+            <input type="hidden" id="idMangaDelete" name="idManga" value="" />
 
             <p>
                 Voulez-vous vraiment supprimer ce manga ? 

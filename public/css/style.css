@@ -274,6 +274,13 @@ label{
 .divAdmin{
     border:0.1rem solid black;
     padding: 1rem;
+    max-width: 30%;
+    min-width: 12%;
+}
+
+.imageAdminManga{
+    max-width:20rem; 
+    max-height:15rem;
 }
 
 /* FOOTER */
