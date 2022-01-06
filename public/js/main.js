@@ -104,7 +104,6 @@ window.addEventListener('DOMContentLoaded', function(){
         tabDeleteCollection.forEach(element => {
             element.addEventListener('click', () => {
                 let idCollection = element.getAttribute('data-post-id');
-                console.log(idCollection);
                 let nameCollection = element.getAttribute('data-post-name');
                 document.getElementById('titleModalDelete').innerHTML = "Supprimer collection : "+nameCollection;
                 document.getElementById('idCollectionDelete').value = idCollection;
@@ -129,7 +128,6 @@ window.addEventListener('DOMContentLoaded', function(){
         // Code pour afficher les informations supplémentaires
         buttonMangaDetails.forEach(element =>{
             element.addEventListener('click', ()=>{
-                console.log(element.getAttribute('data-post-id'));
                 afficherMasquer('divMangaDetails'+element.getAttribute('data-post-id'));
             });
         })

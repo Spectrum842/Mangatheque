@@ -2,12 +2,12 @@
 
 class Collection
 {
-    public function __construct($id_user = '', $id_manga = ''){
+    public function __construct(int $id_user = null, int $id_manga = null){
         $this->id_user = $id_user;
         $this->id_manga = $id_manga;
     }
 
-    public function getCollection($id){
+    public function getCollection(int $id){
         $db = new Database();
         $sql = "SELECT * FROM collection WHERE ID = :ID";
         $det = $db->select($sql, ['ID'=> $id]);
@@ -26,14 +26,14 @@ class Collection
         return $det;
     }
 
-    public function addCollection($id_user, $id_manga, $name, $image, $description){
+    public function addCollection(int $id_user, int $id_manga, string $name, string $image, string $description){
         $db = new Database();
         $sql = "INSERT INTO `collection` (`ID`, `id_user`, `id_manga`, `name`, `image`, `description`) VALUES (NULL, :id_user, :id_manga, :name, :image, :description)";
         $det = $db->execute($sql, ['id_user' => $id_user, 'id_manga'=> $id_manga, 'name' => $name, 'image'=> $image, 'description' => $description]);
         return $det;
     }
 
-    public function updateCollection($idCollection, $name, $image, $description){
+    public function updateCollection(int $idCollection, string $name, string $image, string $description){
         $db = new Database();
         $sql = "UPDATE `collection` SET `name` = :name, `image` = :image, `description` = :description WHERE `collection`.`ID` = :ID";
         $det = $db->execute($sql, ['ID'=>$idCollection, 'name'=> $name, 'image' => $image, 'description' => $description ]);

@@ -9,10 +9,9 @@ session_start();
 session_destroy();
 require '../../pages/header.php';
 // On vérifie le post formulaire
-if($_POST['action'] === 'connexion'){
+if( isset($_POST['action']) && $_POST['action'] === 'connexion'){
     // Création du tableau de gestion des erreurs
     $errors = [];
-    
      // On vérifie que l'user existe en base de données grâce a l'email
     $authentification = new Authentification();
     $id_user = $authentification->getUserId($_POST['email']);
@@ -37,4 +36,4 @@ if($_POST['action'] === 'connexion'){
 
 include '../../pages/authentification/connexion.php';
 
- require '../../Mangatheque/pages/footer.php';
+ require '../../../Mangatheque/pages/footer.php';

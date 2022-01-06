@@ -3,7 +3,7 @@
 class Authentification
 {
     
-    public function getUserId($email){
+    public function getUserId(string $email){
         $database = new Database();
         $sql = 'SELECT ID FROM users WHERE email = :email';
         $det = $database->select($sql, ['email'=>$email]);
@@ -12,7 +12,7 @@ class Authentification
         return $id_user;
     }
 
-    public function getPassword($id){
+    public function getPassword(int $id){
         $database = new Database();
         $sql = 'SELECT password FROM users WHERE ID = :ID';
         $det = $database->select($sql, ['ID'=>$id]);
@@ -21,7 +21,7 @@ class Authentification
         return $password;
     }
 
-    public function addUser($email, $password, $pseudo, $dateBirth, $role = 'user'){
+    public function addUser(string $email, string $password, string $pseudo, string $dateBirth, string $role = 'user'){
         $database = new Database();
         $sql = "INSERT INTO `users` (`ID`, `email`, `password`, `pseudo`, `datebirth`, `role`) VALUES (NULL, :email, :password, :pseudo, :dateBirth, :role)";
         $det = $database->execute($sql, ['email'=>$email, 'password' => $password, 'pseudo' => $pseudo, 'dateBirth' => $dateBirth, 'role'=> $role]);

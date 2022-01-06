@@ -2,7 +2,7 @@
 
 class User
 {
-    public function __construct($id_user){
+    public function __construct(int $id_user){
         $this->id_user = $id_user;
     }
     public function getName(){
