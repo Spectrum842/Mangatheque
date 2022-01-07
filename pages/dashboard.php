@@ -27,8 +27,8 @@
                     <h3><?= $collection['name']?> </h3>
                     <img src ="<?= $collection['image'] ?>" alt="logo_<?= $collection['name']?>" class="logoManga"/>
                     <p><?= $collection['description']?></p>
-                    <button id='updateCollection<?= $collection['id_manga'] ?>' class='updateCollection button modifyButton' data-post-id='<?= $collection['ID'] ?>' data-post-name='<?= htmlspecialchars($collection['name'])?>' data-post-image='<?= $collection['image']?>' data-post-description='<?= htmlspecialchars($collection['description'])?>'>Modifier</button>
-                    <button id='deleteCollection<?= $collection['id_manga'] ?>' class='deleteCollection button deleteButton' data-post-id='<?= $collection['ID'] ?>' data-post-name='<?= htmlspecialchars($collection['name'])?>' >Supprimer</button>
+                    <button id='updateCollection<?= $collection['id_manga'] ?>' class='updateCollection button modifyButton' data-post-id='<?= $collection['ID'] ?>'>Modifier</button>
+                    <button id='deleteCollection<?= $collection['id_manga'] ?>' class='deleteCollection button deleteButton' data-post-id='<?= $collection['ID'] ?>'>Supprimer</button>
                     
                     <?php if($collection['id_manga'] != 0 ) { ?>
                     <p class="moreInfoManga" data-post-id="<?= $collection['id_manga'] ?>">Plus d'infos<i class="fas fa-angle-double-down icone"></i></p>

@@ -14,14 +14,6 @@ class Database{
         }
     }
 
-    static function get()
-    {
-        if (!self::$db instanceof \PDO) {
-            self::$db = new Database();
-        }
-        return self::$db;
-    }
-
     function select(string $sql, array $bindValues = array())
     {
         $req = self::$db->prepare($sql);
