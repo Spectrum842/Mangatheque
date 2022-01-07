@@ -30,10 +30,15 @@
             <p>
                 <span class="spanError"><?= $errors['password'] ?></span>
             </p><?php } ?>
-            
+
+            <p>
+                <a href="/app/controllers/Inscription.php" alt="redirectionInscription">Pas encore de compte ? Inscrivez-vous !</a>
+            </p>
+
             <p>
                 <input type="submit" class="submitAuthenticate button otherButton" value="Connexion" />
             </p>
+            
             
         </form>
     </div>
