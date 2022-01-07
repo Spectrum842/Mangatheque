@@ -14,7 +14,7 @@
             <header class="header">
                 <section>
                     <div id="divTitleHeader">
-                        <h1 id="mainTitle" onclick="location.href='/public/index.php'" class="title">La Mangathèque</h1>
+                        <h1 id="mainTitle" class="title">La Mangathèque</h1>
                     </div>
                     <nav id="nav">
                         <ul>
