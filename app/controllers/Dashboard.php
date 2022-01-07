@@ -57,6 +57,8 @@ if(isset($_SESSION['id_user'])){
             }else if($e->getMessage()){
                 $errors['image'] = "Url de l'image non valide";
             }
+
+            // Reharder doc PDO pour getError()
             echo 'Erreur PDO : '.$e->getMessage();
             
             
