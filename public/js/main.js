@@ -30,6 +30,10 @@ async function display_data(id_collection){
 /* Script DOM APP*/
 window.addEventListener('DOMContentLoaded', function(){
 
+    // Renvoie sur l'index au click sur titre principale
+    document.getElementById('mainTitle').addEventListener('click', ()=>{
+        document.location.href="/public/index.php";
+    });
     //Local Storage for Nightmode + code
     let nightMode = document.getElementById('nightMode');
     if(nightMode){
