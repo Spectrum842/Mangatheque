@@ -88,12 +88,13 @@ window.addEventListener('DOMContentLoaded', function(){
                 
                 display_data(idCollection);
 
-                // Ancienne méthode pour remplir les champs 
+                // Ancienne méthode pour remplir les champs de modification
                 // document.getElementById('titleModalUpdate').innerHTML = "Modifier collection : "+nameCollection;
                 // document.getElementById('updateName').value = element.getAttribute('data-post-name');
                
                 // document.getElementById('updateImage').value = element.getAttribute('data-post-image');
                 // document.getElementById('updateDescription').value = element.getAttribute('data-post-description');
+
                 afficherMasquer('divFormUpdate');
                 
                 
