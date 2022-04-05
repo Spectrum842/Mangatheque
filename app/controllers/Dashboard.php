@@ -1,7 +1,7 @@
 <?php
 
 require '../../app/models/config/config.php';
-require 'C://Dev/Mangatheque/app/models/database/Database.php';
+require '../../app/models/database/Database.php';
 
 require '../../app/models/User.php';
 require '../../app/models/Manga.php';
